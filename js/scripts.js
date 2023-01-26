@@ -1,4 +1,21 @@
 // Business Logic -------
+function SnackBar(soda, candy) {
+  this.soda = soda;
+  this.candy = candy;
+  // this.popcorn = popcorn;
+}
+
+SnackBar.prototype.calculateSnackCost = function() {
+  let snackCost = 1;
+  if (this.soda === "Pepsi") {
+    snackCost += 6.00;
+    }
+  if (this.candy === "Skittles") {
+    snackCost += 5;
+  }
+  return snackCost.toString();
+}
+
 
 function Ticket(movieName, movieTime, special) {
   this.movieName = movieName;
@@ -11,8 +28,8 @@ Ticket.prototype.selectedTicket = function() {
 }
 
 Ticket.prototype.calculateCost = function() {
-   let cost = 10;
-    if ( this.special === "Matinee") {
+    let cost = 10;
+    if (this.special === "Matinee") {
         cost += 5.00;
     } else if(this.special === "Youth Upcharge") {
         cost += 7.00;
@@ -22,8 +39,10 @@ Ticket.prototype.calculateCost = function() {
     if (this.movieName === "Gorilla Slasher") {
       cost -= 7.00;
     }
-    return cost;
+    return cost.toString();
 }
+
+
 
 // UI Logic -------
 
@@ -37,9 +56,11 @@ function handleFormSubmission(event){
     let outputNameSpot = document.getElementById("outputName");
     let outputTimeSpot = document.getElementById("outputTime");
     let outputSpecialSpot = document.getElementById("outputSpecial");
+    let cost = document.getElementById("cost");
     outputNameSpot.innerText = newTicket.movieName;
     outputTimeSpot.innerText = newTicket.movieTime;
     outputSpecialSpot.innerText = newTicket.special;
+    cost.innerText = "$" + newTicket.calculateCost();
     ticketSpot.removeAttribute("class");
 
     console.log(newTicket.selectedTicket());

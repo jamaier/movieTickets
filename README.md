@@ -1,3 +1,24 @@
+
+let snack = new SnackBar("Pepsi", "", "");
+
+Define: SnackBar
+
+test: It should return a cost of 7
+
+code: new SnackBar("Pepsi")
+Expected output: 7
+
+Define: SnackBar
+
+test: It should return a cost of total snacks.
+
+code: new SnackBar("Pepsi", "Skittles")
+Expected output: 12
+
+
+
+
+
 function SellTicket() {
   this.currentId = 0;
 }
