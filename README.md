@@ -15,6 +15,7 @@ test: It should return a cost of total snacks.
 code: new SnackBar("Pepsi", "Skittles")
 Expected output: 12
 
+this too
 
 
 
