@@ -13,7 +13,7 @@ SnackBar.prototype.calculateSnackCost = function() {
   if (this.candy === "Skittles") {
     snackCost += 5;
   }
-  return snackCost.toString();
+  return snackCost;
 }
 
 
@@ -39,7 +39,7 @@ Ticket.prototype.calculateCost = function() {
     if (this.movieName === "Gorilla Slasher") {
       cost -= 7.00;
     }
-    return cost.toString();
+    return cost;
 }
 
 
@@ -52,15 +52,17 @@ function handleFormSubmission(event){
     const selectedMovieTime = document.querySelector("select#movie-time").value;
     const selectedSpecial = document.querySelector("select#special").value;
     let newTicket = new Ticket(selectedMovieName, selectedMovieTime, selectedSpecial);
+    let snacks = new SnackBar(soda, candy);
     let ticketSpot = document.getElementById("ticket");
     let outputNameSpot = document.getElementById("outputName");
     let outputTimeSpot = document.getElementById("outputTime");
     let outputSpecialSpot = document.getElementById("outputSpecial");
     let cost = document.getElementById("cost");
+    let totalCost =  newTicket.calculateCost() + snacks.calculateSnackCost();
     outputNameSpot.innerText = newTicket.movieName;
     outputTimeSpot.innerText = newTicket.movieTime;
     outputSpecialSpot.innerText = newTicket.special;
-    cost.innerText = "$" + newTicket.calculateCost();
+    cost.innerText = "$" + totalCost;
     ticketSpot.removeAttribute("class");
 
     console.log(newTicket.selectedTicket());
